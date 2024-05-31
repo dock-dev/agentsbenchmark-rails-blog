@@ -12,4 +12,12 @@ class BlogFlowsTest < ActionDispatch::IntegrationTest
       assert_text blog_post.body
     end
   end
+
+  test 'show displays a blog post' do
+    blog_post = FactoryBot.create(:blog_post)
+    visit blog_post_path(blog_post)
+
+    assert_text blog_post.title
+    assert_text blog_post.body
+  end
 end
