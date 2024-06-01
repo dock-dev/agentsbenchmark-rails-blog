@@ -23,6 +23,20 @@ class BlogPostsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'should get edit' do
+    blog_post = FactoryBot.create(:blog_post)
+    get edit_blog_post_path(blog_post)
+
+    assert_response :success
+  end
+
+  test 'edit should redirect to root_path if :id is not found' do
+    missing_blog_post_id = (BlogPost.maximum(:id) || 0).next
+    get edit_blog_post_path(missing_blog_post_id)
+
+    assert_redirected_to root_path
+  end
+
   test 'should post create' do
     blog_post = FactoryBot.build(:blog_post)
     blog_post_params = blog_post.attributes.slice('title', 'body')

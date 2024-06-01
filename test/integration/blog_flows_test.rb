@@ -28,6 +28,14 @@ class BlogFlowsTest < ActionDispatch::IntegrationTest
     assert_field 'blog_post_body'
   end
 
+  test 'edit displays a blog post form' do
+    blog_post = FactoryBot.create(:blog_post)
+    visit edit_blog_post_path(blog_post)
+
+    assert_field 'blog_post_title'
+    assert_field 'blog_post_body'
+  end
+
   test 'submitting a new blog_post redirects to the show view' do
     blog_post = FactoryBot.build(:blog_post)
     visit new_blog_post_path(blog_post)
