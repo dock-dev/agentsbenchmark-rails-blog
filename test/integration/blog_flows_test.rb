@@ -20,4 +20,11 @@ class BlogFlowsTest < ActionDispatch::IntegrationTest
     assert_text blog_post.title
     assert_text blog_post.body
   end
+
+  test 'new displays a blog post form' do
+    visit new_blog_post_path
+
+    assert_field 'blog_post_title'
+    assert_field 'blog_post_body'
+  end
 end

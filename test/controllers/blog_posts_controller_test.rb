@@ -9,6 +9,13 @@ class BlogPostsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'should get new' do
+    blog_post = FactoryBot.create(:blog_post)
+    get new_blog_post_path(blog_post)
+
+    assert_response :success
+  end
+
   test 'should get show' do
     blog_post = FactoryBot.create(:blog_post)
     get blog_post_path(blog_post)

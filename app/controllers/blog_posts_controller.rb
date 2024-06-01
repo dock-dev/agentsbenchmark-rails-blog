@@ -8,6 +8,10 @@ class BlogPostsController < ApplicationController
 
   def show; end
 
+  def new
+    @blog_post = BlogPost.new
+  end
+
   private
 
   def set_blog_post
