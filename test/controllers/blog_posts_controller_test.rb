@@ -60,4 +60,16 @@ class BlogPostsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to root_path
   end
+
+  test 'should patch update' do
+    blog_post = FactoryBot.create(:blog_post)
+    blog_post_params = FactoryBot.build(:blog_post).attributes.slice('title', 'body')
+    patch blog_post_path(id: blog_post.id, params: { blog_post: blog_post_params })
+
+    assert_response :redirect
+    blog_post.reload
+
+    assert_equal blog_post_params, blog_post.attributes.slice('title', 'body')
+    assert_redirected_to blog_post_path(blog_post)
+  end
 end

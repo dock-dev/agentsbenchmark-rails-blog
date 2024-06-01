@@ -48,4 +48,18 @@ class BlogFlowsTest < ActionDispatch::IntegrationTest
     assert_text blog_post.title
     assert_text blog_post.body
   end
+
+  test 'updating a blog_post redirects to the show view' do
+    blog_post = FactoryBot.create(:blog_post)
+    updated_blog_post = FactoryBot.build(:blog_post)
+    visit edit_blog_post_path(blog_post)
+
+    fill_in 'blog_post_title', with: updated_blog_post.title
+    fill_in 'blog_post_body', with: updated_blog_post.body
+    click_on 'Update Blog post'
+
+    assert_current_path blog_post_path(blog_post)
+    assert_text updated_blog_post.title
+    assert_text updated_blog_post.body
+  end
 end
