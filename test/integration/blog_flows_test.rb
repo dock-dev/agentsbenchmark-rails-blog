@@ -62,4 +62,13 @@ class BlogFlowsTest < ActionDispatch::IntegrationTest
     assert_text updated_blog_post.title
     assert_text updated_blog_post.body
   end
+
+  test 'deleting a blog_post redirects to root' do
+    blog_post = FactoryBot.create(:blog_post)
+    visit edit_blog_post_path(blog_post)
+    click_on 'Destroy'
+
+    assert_empty BlogPost.all
+    assert_current_path root_path
+  end
 end

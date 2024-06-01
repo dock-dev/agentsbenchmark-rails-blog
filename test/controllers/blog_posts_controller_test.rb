@@ -72,4 +72,14 @@ class BlogPostsControllerTest < ActionDispatch::IntegrationTest
     assert_equal blog_post_params, blog_post.attributes.slice('title', 'body')
     assert_redirected_to blog_post_path(blog_post)
   end
+
+  test 'should delete destroy' do
+    blog_post = FactoryBot.create(:blog_post)
+    delete blog_post_path(blog_post)
+
+    assert_empty BlogPost.all
+
+    assert_response :redirect
+    assert_redirected_to root_path
+  end
 end
