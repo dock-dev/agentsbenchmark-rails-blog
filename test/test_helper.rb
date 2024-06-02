@@ -12,6 +12,17 @@ module ActiveSupport
     parallelize(workers: :number_of_processors)
 
     # Add more helper methods to be used by all tests here...
+
+    def initialize(name)
+      @current_step = ENV.fetch('STEP', 0).to_i
+      super
+    end
+
+    private
+
+    def skip_if_under_step(step)
+      skip if @current_step < step
+    end
   end
 end
 
