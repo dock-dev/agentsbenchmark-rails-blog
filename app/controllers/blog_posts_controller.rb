@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class BlogPostsController < ApplicationController
-  before_action :set_blog_post, only: [:show]
+  before_action :set_blog_post, only: %i[show edit]
   def index
     @blog_posts = BlogPost.all
   end
@@ -11,6 +11,8 @@ class BlogPostsController < ApplicationController
   def new
     @blog_post = BlogPost.new
   end
+
+  def edit; end
 
   def create
     @blog_post = BlogPost.new(blog_post_params)
