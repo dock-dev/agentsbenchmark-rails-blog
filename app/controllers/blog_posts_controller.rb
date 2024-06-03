@@ -1,17 +1,18 @@
 # frozen_string_literal: true
 
 class BlogPostsController < ApplicationController
-  before_action :set_blog_post, only: %i[show edit update]
+  before_action :set_blog_post, only: %i[show edit update destroy]
+  
   def index
     @blog_posts = BlogPost.all
   end
 
   def show; end
 
-  def new
+  def new 
     @blog_post = BlogPost.new
   end
-
+  
   def edit; end
 
   def create
@@ -19,7 +20,7 @@ class BlogPostsController < ApplicationController
     if @blog_post.save
       redirect_to @blog_post
     else
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity  
     end
   end
 
@@ -29,6 +30,11 @@ class BlogPostsController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @blog_post.destroy
+    redirect_to root_path
   end
 
   private
