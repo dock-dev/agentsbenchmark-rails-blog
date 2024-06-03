@@ -17,5 +17,9 @@
     <%= form.text_area :body %>
   </div>
 
-  <%= form.button %>
-<% end %>
+  <% if @blog_post.persisted? %>
+    <%= form.button "Update Blog post" %>
+  <% else %>
+    <%= form.button "Create Blog post" %>
+  <% end %>
+<% end %>  
