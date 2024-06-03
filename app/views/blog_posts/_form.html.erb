@@ -12,10 +12,11 @@
     <%= form.text_field :title %>
   </div>
 
-  <div>
+  <div>  
     <%= form.label :body %>
     <%= form.text_area :body %>
   </div>
 
   <%= form.button %>
-<% end %>
+  <%= button_to 'Destroy', @blog_post, method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } } %>
+<% end %>  
