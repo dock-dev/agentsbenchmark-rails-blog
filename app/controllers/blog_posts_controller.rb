@@ -2,6 +2,7 @@
 
 class BlogPostsController < ApplicationController
   before_action :set_blog_post, only: [:show]
+  
   def index
     @blog_posts = BlogPost.all
   end
@@ -12,6 +13,16 @@ class BlogPostsController < ApplicationController
     @blog_post = BlogPost.new
   end
 
+  def create
+    @blog_post = BlogPost.new(blog_post_params)
+    
+    if @blog_post.save
+      redirect_to @blog_post
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+  
   private
 
   def set_blog_post
@@ -19,4 +30,8 @@ class BlogPostsController < ApplicationController
   rescue ActiveRecord::RecordNotFound
     redirect_to root_path
   end
-end
+
+  def blog_post_params
+    params.require(:blog_post).permit(:title, :body)
+  end
+end  
