@@ -12,10 +12,10 @@
     <%= form.text_field :title %>
   </div>
 
-  <div>
+  <div>  
     <%= form.label :body %>
     <%= form.text_area :body %>
   </div>
 
-  <%= form.button %>
-<% end %>
+  <%= form.button @blog_post.new_record? ? 'Create Blog post' : 'Update Blog post' %>
+<% end %>  
