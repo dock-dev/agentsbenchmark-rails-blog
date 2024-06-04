@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   
   root "blog_posts#index"
-  resources :blog_posts, only: [:show, :new, :create, :edit, :update]
+  resources :blog_posts, only: [:show, :new, :create, :edit, :update, :destroy]
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500. 
   # Can be used by load balancers and uptime monitors to verify that the app is live.
@@ -12,4 +12,4 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-end
+end  
