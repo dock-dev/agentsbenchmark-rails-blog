@@ -20,7 +20,7 @@ class BlogPostsController < ApplicationController
     if @blog_post.save
       redirect_to blog_post_path(@blog_post)
     else
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity  
     end
   end
 
@@ -29,7 +29,7 @@ class BlogPostsController < ApplicationController
     redirect_to root_path unless @blog_post
   end
 
-  def update  
+  def update
     @blog_post = BlogPost.find_by(id: params[:id])
 
     if @blog_post
@@ -37,7 +37,7 @@ class BlogPostsController < ApplicationController
         redirect_to blog_post_path(@blog_post)
       else
         render :edit, status: :unprocessable_entity
-      end
+      end 
     else
       redirect_to root_path
     end
@@ -46,6 +46,6 @@ class BlogPostsController < ApplicationController
   private
 
   def blog_post_params
-    params.require(:blog_post).permit(:title, :body)  
+    params.require(:blog_post).permit(:title, :body)
   end
 end
