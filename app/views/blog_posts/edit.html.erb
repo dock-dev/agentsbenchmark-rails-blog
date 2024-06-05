@@ -12,6 +12,8 @@
   </div>
 
   <div>
-    <%= form.submit "Update Blog post" %>  
+    <%= form.submit "Update Blog post" %>
   </div>
 <% end %>
+
+<%= button_to "Destroy", @blog_post, method: :delete %>  
