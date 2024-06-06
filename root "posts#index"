@@ -1,0 +1,2 @@
+  
+  resources :blog_posts, only: [:index, :show]
