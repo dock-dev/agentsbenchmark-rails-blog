@@ -18,4 +18,6 @@
   </div>
 
   <%= form.button %>
-<% end %>
+  <% if form.object.persisted? %>
+    <%= button_to 'Destroy', blog_post, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
