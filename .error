@@ -1,0 +1,4 @@
+error: cannot apply binary patch to 'db/development.sqlite3' without full index line
+error: db/development.sqlite3: patch does not apply
+ERROR    Failed to apply patch trajectories/yann/gpt4o__dock-dev__agentsbenchmark-rails-blog__default__t-0.00__p-0.95__c-4.00__install-1/patches/dock-dev__agentsbenchmark-rails-blog-i93.patch to /home/yann/apps/agentsbenchmark-rails-blog: Command
+         '['git', 'apply', '/home/yann/apps/SWE-agent/trajectories/yann/gpt4o__dock-dev__agentsbenchmark-rails-blog__default__t-0.00__p-0.95__c-4.00__install-1/patches/dock-dev__agentsbenchmark-rails-blog-i93.patch']' returned non-zero exit status 1.error: cannot apply binary patch to 'db/development.sqlite3' without full index line
