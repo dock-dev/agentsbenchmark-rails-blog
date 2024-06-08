@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class BlogPostsController < ApplicationController
-  before_action :set_blog_post, only: %i[show edit]
+  before_action :set_blog_post, only: %i[show edit update]
   def index
     @blog_posts = BlogPost.all
   end
@@ -13,8 +13,14 @@ class BlogPostsController < ApplicationController
   end
 
   def edit; end
-
-  def create
+  def update
+    if @blog_post.update(blog_post_params)
+      render :show
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+  end
     @blog_post = BlogPost.new(blog_post_params)
     if @blog_post.save
       redirect_to @blog_post
