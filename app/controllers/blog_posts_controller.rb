@@ -12,7 +12,17 @@ class BlogPostsController < ApplicationController
     @blog_post = BlogPost.new
   end
 
+  def update
+    if @blog_post.update(blog_post_params)
+      redirect_to @blog_post
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+  end
+
   def edit; end
+end
 
   def create
     @blog_post = BlogPost.new(blog_post_params)
